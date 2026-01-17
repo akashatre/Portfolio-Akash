@@ -1,94 +1,67 @@
 import { motion } from 'framer-motion';
-import { ExternalLink, Github, BarChart2, Database, Globe } from 'lucide-react';
-import Tilt from 'react-parallax-tilt';
+import { ExternalLink, Database, BarChart2, Globe, Code, Smartphone, Layout } from 'lucide-react';
+import { useProjects } from '../context/ProjectContext';
 import './Projects.css';
 
-const projects = [
-    {
-        title: "HR Analytics Dashboard",
-        desc: "Interactive Power BI dashboard to track employee performance, attrition risk, and productivity scores. Built with Python for data cleaning and SQL for data modeling.",
-        tech: ["Power BI", "Python", "SQL", "Pandas"],
-        link: "https://github.com/akashatre",
-        github: "https://github.com/akashatre",
-        gradient: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
-        icon: <BarChart2 size={48} color="white" />
-    },
-    {
-        title: "E-commerce Sales Analytics",
-        desc: "Comprehensive analytics solution for measuring KPIs like revenue, AOV, and customer retention. Utilized SQL for segmentation and Python for automation.",
-        tech: ["Power BI", "SQL", "Python", "DAX"],
-        link: "https://github.com/akashatre",
-        github: "https://github.com/akashatre",
-        gradient: "linear-gradient(135deg, #ff9a9e 0%, #fecfef 99%, #fecfef 100%)",
-        icon: <Globe size={48} color="white" />
-    },
-    {
-        title: "News Sentiment Analysis",
-        desc: "Automated AWS workflow to analyze news sentiment using Lambda, Step Functions, and Comprehend. Stored results in S3 and SQL database.",
-        tech: ["AWS", "Lambda", "Comprehend", "SQL"],
-        link: "https://github.com/akashatre/News-Sentiment-Analysis",
-        github: "https://github.com/akashatre/News-Sentiment-Analysis",
-        gradient: "linear-gradient(135deg, #0ba360 0%, #3cba92 100%)",
-        icon: <Database size={48} color="white" />
-    },
-    {
-        title: "Config-based Data Pipeline",
-        desc: "Dynamic data ingestion pipeline allowing configuration-based transformations and validation for scalable data processing.",
-        tech: ["Python", "ETL", "JSON", "Cloud"],
-        link: "https://github.com/akashatre/Configrarion-based-data-pipline",
-        github: "https://github.com/akashatre/Configrarion-based-data-pipline",
-        gradient: "linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)",
-        icon: <Database size={48} color="white" />
-    }
-];
+const ICON_MAP = {
+    "BarChart2": <BarChart2 size={80} />,
+    "Globe": <Globe size={80} />,
+    "Database": <Database size={80} />,
+    "Code": <Code size={80} />,
+    "Smartphone": <Smartphone size={80} />,
+    "Layout": <Layout size={80} />
+};
 
 const Projects = () => {
+    const { projects } = useProjects();
+
     return (
         <section id="projects">
-            <motion.h2
-                className="section-title"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-            >
-                Featured Projects
-            </motion.h2>
+            <div className="container">
+                <div className="section-header">
+                    <h2 className="section-title">Projects</h2>
+                    <div style={{ width: '60px', height: '4px', background: 'var(--primary-color)', margin: '0.5rem auto 1rem' }}></div>
+                    <p className="section-subtitle">A selection of my recent work.</p>
+                </div>
 
-            <div className="projects-grid">
-                {projects.map((project, index) => (
-                    <Tilt key={index} tiltMaxAngleX={5} tiltMaxAngleY={5} scale={1.02} transitionSpeed={2500}>
+                <div className="projects-list">
+                    {projects.map((project, index) => (
                         <motion.div
-                            className="project-card interactive"
-                            initial={{ opacity: 0, y: 30 }}
+                            key={project.id || index}
+                            className="project-item"
+                            initial={{ opacity: 0, y: 40 }}
                             whileInView={{ opacity: 1, y: 0 }}
-                            transition={{ delay: index * 0.1 }}
-                            viewport={{ once: true }}
+                            transition={{ duration: 0.6 }}
+                            viewport={{ once: true, margin: "-100px" }}
                         >
-                            <div className="project-image" style={{ background: project.gradient }}>
-                                {project.icon}
+                            {/* Visual Side */}
+                            <div className="project-visual">
+                                <div className="project-bg-shape"></div>
+                                <div className="project-icon-large">
+                                    {ICON_MAP[project.iconName] || <Code size={80} />}
+                                </div>
                             </div>
+
+                            {/* Content Side */}
                             <div className="project-content">
                                 <h3 className="project-title">{project.title}</h3>
-                                <div className="project-tech">
+                                <p className="project-desc">{project.desc}</p>
+
+                                <div className="project-tags">
                                     {project.tech.map((t, i) => (
                                         <span key={i} className="tech-tag">{t}</span>
                                     ))}
                                 </div>
-                                <p className="project-desc">{project.desc}</p>
-                                <div className="project-links">
-                                    {project.link && (
-                                        <a href={project.link} target="_blank" rel="noopener noreferrer" className="link-btn">
-                                            <ExternalLink size={18} /> Demo
-                                        </a>
-                                    )}
-                                    <a href={project.github} target="_blank" rel="noopener noreferrer" className="link-btn">
-                                        <Github size={18} /> Code
+
+                                {project.link && (
+                                    <a href={project.link} target="_blank" rel="noopener noreferrer" className="project-link">
+                                        View Project
                                     </a>
-                                </div>
+                                )}
                             </div>
                         </motion.div>
-                    </Tilt>
-                ))}
+                    ))}
+                </div>
             </div>
         </section>
     );

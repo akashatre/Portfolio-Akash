@@ -1,0 +1,39 @@
+/* GLASSMORPHISM GLOBAL THEME */
+
+/* Apply Glass Effect to generic panels if needed */
+.glass-panel {
+    background: rgba(30, 41, 59, 0.4) !important;
+    backdrop-filter: blur(16px) !important;
+    -webkit-backdrop-filter: blur(16px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1) !important;
+    border-radius: 20px !important;
+}
+
+/* Typography updates for Space Theme */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: #ffffff;
+    text-shadow: 0 0 20px rgba(99, 102, 241, 0.2);
+    /* Subtle glow */
+}
+
+/* Scrollbar to match space */
+::-webkit-scrollbar-track {
+    background: #030014 !important;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(99, 102, 241, 0.4) !important;
+    border-radius: 10px;
+    border: 2px solid #030014;
+    /* Padding effect */
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-color) !important;
+}

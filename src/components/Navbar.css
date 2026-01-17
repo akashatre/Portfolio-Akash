@@ -1,99 +1,85 @@
+/* NAVBAR - SUNNY SERIF */
+
 .navbar {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
+    height: var(--nav-height);
+    display: flex;
+    align-items: center;
     z-index: 1000;
     transition: all 0.3s ease;
-    padding: 1.5rem 2rem;
     background: transparent;
 }
 
 .navbar.scrolled {
-    background-color: var(--navbar-bg);
+    background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(10px);
-    padding: 1rem 2rem;
-    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+    box-shadow: var(--shadow-sm);
 }
 
 .nav-container {
     max-width: 1200px;
+    width: 100%;
     margin: 0 auto;
+    padding: 0 1.5rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
 .logo {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-size: 1.8rem;
-    font-weight: 800;
-    color: #fff;
-    letter-spacing: -0.5px;
-}
-
-.accent {
-    color: var(--primary-color);
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    letter-spacing: -0.02em;
 }
 
 .nav-menu {
     display: flex;
-    gap: 2.5rem;
     align-items: center;
+    gap: 2.5rem;
 }
 
 .nav-link {
-    color: var(--text-color);
-    font-weight: 500;
-    font-size: 0.95rem;
+    font-family: 'Nunito', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    transition: color 0.2s;
     position: relative;
 }
 
-.nav-link::after {
-    content: '';
-    position: absolute;
-    width: 0;
-    height: 2px;
-    bottom: -4px;
-    left: 0;
-    background-color: var(--primary-color);
-    transition: width 0.3s ease;
-}
-
 .nav-link:hover {
-    color: #fff;
+    color: var(--primary-color);
+    /* Yellow Hover */
 }
 
-.nav-link:hover::after {
-    width: 100%;
-}
-
+/* Mobile Toggle */
 .mobile-toggle {
     display: none;
-    color: #fff;
     background: none;
-    font-size: 1.5rem;
+    color: var(--text-primary);
 }
 
+/* Mobile Menu */
 .mobile-menu {
+    display: none;
     position: absolute;
     top: 100%;
     left: 0;
     width: 100%;
-    background: var(--card-bg);
-    border-top: 1px solid var(--border-color);
-    display: flex;
-    flex-direction: column;
+    background: white;
     padding: 2rem;
+    flex-direction: column;
     gap: 1.5rem;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-}
-
-.mobile-menu .nav-link {
-    font-size: 1.2rem;
-    display: block;
+    align-items: center;
+    box-shadow: var(--shadow-md);
+    border-top: 1px solid var(--border-color);
+    max-height: 80vh;
+    overflow-y: auto;
 }
 
 @media (max-width: 768px) {
@@ -103,5 +89,9 @@
 
     .mobile-toggle {
         display: block;
+    }
+
+    .mobile-menu {
+        display: flex;
     }
 }

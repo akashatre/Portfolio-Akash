@@ -1,0 +1,64 @@
+/* TECH MARQUEE - SUNNY SERIF */
+
+.tech-marquee-section {
+    padding: 2rem 0;
+    background: var(--surface-highlight);
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+    overflow: hidden;
+    position: relative;
+    white-space: nowrap;
+}
+
+.marquee-container {
+    display: inline-flex;
+    animation: scroll 30s linear infinite;
+}
+
+.marquee-item {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-tertiary);
+    /* Muted initial color */
+    margin: 0 3rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: color 0.3s;
+    opacity: 0.7;
+}
+
+@media (max-width: 768px) {
+    .marquee-item {
+        font-size: 1.1rem;
+        margin: 0 1.5rem;
+    }
+}
+
+.marquee-item:hover {
+    color: var(--primary-color);
+    opacity: 1;
+}
+
+.marquee-dot {
+    width: 6px;
+    height: 6px;
+    background: var(--primary-color);
+    border-radius: 50%;
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+/* Pause on hover for readability */
+.tech-marquee-section:hover .marquee-container {
+    animation-play-state: paused;
+}

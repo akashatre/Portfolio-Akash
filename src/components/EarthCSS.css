@@ -1,0 +1,129 @@
+/* REALISTIC EARTH DESIGN - GLOBAL BACKGROUND */
+
+.earth-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    overflow: hidden;
+    pointer-events: none;
+    background: radial-gradient(circle at 30% 50%, #1b2735 0%, #090a0f 100%);
+    /* Deep realistic space */
+}
+
+/* Stars - More subtle and realistic */
+.stars {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image:
+        radial-gradient(white, rgba(255, 255, 255, .15) 1px, transparent 1.5px),
+        radial-gradient(white, rgba(255, 255, 255, .1) 1px, transparent 1.5px);
+    background-size: 500px 500px, 300px 300px;
+    background-position: 0 0, 40px 60px;
+    animation: twinkle 100s linear infinite;
+    opacity: 0.9;
+}
+
+.planet-wrapper {
+    position: absolute;
+    right: -25%;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 85vh;
+    height: 85vh;
+    border-radius: 50%;
+    /* Realistic Atmosphere Shadow */
+    box-shadow:
+        inset 50px 0 120px rgba(0, 0, 0, 0.95),
+        /* Dark night side */
+        inset -10px 0 30px rgba(135, 206, 235, 0.3),
+        /* Light blue atmosphere inner */
+        0 0 60px rgba(135, 206, 235, 0.15);
+    /* Soft outer glow */
+}
+
+@media (max-width: 768px) {
+    .planet-wrapper {
+        width: 80vw;
+        height: 80vw;
+        right: 50%;
+        transform: translateX(50%);
+        top: auto;
+        bottom: -15%;
+    }
+}
+
+/* Base Earth Layer */
+.earth {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200%;
+    height: 100%;
+    /* Realistic Day Map */
+    background: url('https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/Earthmap1000x500.jpg/1000px-Earthmap1000x500.jpg');
+    background-size: 50% 100%;
+    background-repeat: repeat-x;
+    animation: rotateEarth 100s linear infinite;
+    border-radius: 50%;
+    /* No filters - Natural colors */
+    opacity: 1;
+}
+
+/* Clouds Layer - Adds depth and realism */
+.clouds {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200%;
+    height: 100%;
+    /* Transparent clouds texture */
+    background: url('https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Cloud_texture.jpg/1000px-Cloud_texture.jpg');
+    /* Ideally we'd use a transparent png, but for css tricks, we can blend */
+    background-size: 50% 100%;
+    background-repeat: repeat-x;
+    animation: rotateEarth 80s linear infinite;
+    /* Move faster than earth */
+    mix-blend-mode: screen;
+    /* Blends black background of texture to transparent */
+    opacity: 0.4;
+    border-radius: 50%;
+}
+
+/* Realistic Atmosphere Halo */
+.planet-wrapper::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    /* Soft daylight edge */
+    box-shadow: -15px -10px 40px rgba(200, 230, 255, 0.2) inset;
+    pointer-events: none;
+    z-index: 3;
+}
+
+@keyframes rotateEarth {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+@keyframes twinkle {
+    0% {
+        background-position: 0 0, 40px 60px;
+    }
+
+    100% {
+        background-position: 500px 500px, 340px 360px;
+    }
+}

@@ -1,89 +1,56 @@
 import { motion } from 'framer-motion';
-import { Award, BookOpen, Briefcase, Code, Linkedin, Github, Mail } from 'lucide-react';
-import { CodeWindow } from './CodeWindow';
+import { Linkedin, Github, Mail, Instagram, MapPin, Calendar, Coffee, Code } from 'lucide-react';
 import './About.css';
+
+const StatItem = ({ icon, value, label }) => (
+    <div className="stat-item">
+        <div className="stat-icon-box">{icon}</div>
+        <div className="stat-info">
+            <span className="stat-value">{value}</span>
+            <span className="stat-label">{label}</span>
+        </div>
+    </div>
+);
 
 const About = () => {
     return (
-        <section id="about" className="about-section">
-            <div className="about-header">
-                <motion.h2
-                    className="section-title"
+        <section id="about" style={{ background: 'white' }}>
+            <div className="container">
+                <motion.div
+                    className="about-card-centered"
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6 }}
                     viewport={{ once: true }}
                 >
-                    About Me
-                </motion.h2>
-            </div>
-
-            <div className="about-grid-modern">
-                {/* Left Column: Sticky Profile Card */}
-                <motion.div
-                    className="profile-card-modern"
-                    initial={{ opacity: 0, x: -50 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                >
-                    <div className="profile-img-frame">
-                        <img src="/profile.png" alt="Akash Atre" />
+                    <div className="about-avatar-wrapper">
+                        <div className="about-blob-bg"></div>
+                        <img src="/profile.png" alt="Akash Atre" className="about-img" />
                     </div>
-                    <h3 className="profile-name">Akash Atre</h3>
-                    <span className="profile-tag">Data Analyst & Engineer</span>
 
-                    <div className="social-links-row">
-                        <a href="https://linkedin.com" className="social-icon-btn"><Linkedin size={20} /></a>
-                        <a href="https://github.com" className="social-icon-btn"><Github size={20} /></a>
-                        <a href="mailto:email@example.com" className="social-icon-btn"><Mail size={20} /></a>
-                    </div>
-                </motion.div>
-
-                {/* Right Column: Bio & Content */}
-                <div className="bio-wrapper">
-                    <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.2 }}
-                        viewport={{ once: true }}
-                    >
-                        <p className="bio-text-modern">
-                            I am a skilled <span className="highlight">Data Analyst</span> and Engineer with expertise in building scalable data pipelines, ETL processes, and big data solutions.
-                            With a strong foundation in <span className="highlight">Python</span>, <span className="highlight">SQL</span>, and <span className="highlight">AWS</span>,
-                            I enjoy diving deep into data, building interactive dashboards, and uncovering patterns that support strategic goals.
+                    <div className="about-content">
+                        <h3>About me</h3>
+                        <p className="about-text">
+                            I am a Data Engineer and Analyst with a passion for uncovering hidden insights in complex datasets.
+                            With a strong foundation in Python, SQL, and Cloud Technologies, I build efficient data pipelines and
+                            intuitive dashboards that empower businesses to make informed decisions.
                         </p>
 
-                        {/* Stats Row */}
-                        <div className="stats-grid-modern">
-                            <div className="stat-box">
-                                <span className="stat-val">1+</span>
-                                <span className="stat-key">Years Exp.</span>
-                            </div>
-                            <div className="stat-box">
-                                <span className="stat-val">5+</span>
-                                <span className="stat-key">Projects</span>
-                            </div>
-                            <div className="stat-box">
-                                <span className="stat-val">10+</span>
-                                <span className="stat-key">Tech Stack</span>
-                            </div>
-                            <div className="stat-box">
-                                <span className="stat-val">MCA</span>
-                                <span className="stat-key">Master's</span>
-                            </div>
+                        {/* New Stats Row */}
+                        <div className="about-stats-row">
+                            <StatItem icon={<Code size={20} />} value="2+ Years" label="Experience" />
+                            <StatItem icon={<Coffee size={20} />} value="10+" label="Projects" />
+                            <StatItem icon={<MapPin size={20} />} value="Bengaluru" label="India" />
                         </div>
-                    </motion.div>
 
-                    {/* Integrated Code Window */}
-                    <motion.div
-                        className="window-wrapper"
-                        initial={{ opacity: 0, y: 40 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.4 }}
-                        viewport={{ once: true }}
-                    >
-                        <CodeWindow />
-                    </motion.div>
-                </div>
+                        <div className="about-socials">
+                            <a href="https://linkedin.com" className="social-icon"><Linkedin size={20} /></a>
+                            <a href="https://github.com" className="social-icon"><Github size={20} /></a>
+                            <a href="https://instagram.com" className="social-icon"><Instagram size={20} /></a>
+                            <a href="mailto:email@example.com" className="social-icon"><Mail size={20} /></a>
+                        </div>
+                    </div>
+                </motion.div>
             </div>
         </section>
     );

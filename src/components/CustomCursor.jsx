@@ -40,7 +40,7 @@ const CustomCursor = () => {
                     x: mousePosition.x - 16,
                     y: mousePosition.y - 16,
                     scale: isHovering ? 1.5 : 1,
-                    borderColor: isHovering ? 'var(--primary-color)' : 'rgba(255, 255, 255, 0.5)'
+                    borderColor: isHovering ? 'var(--primary-color)' : 'var(--text-tertiary)'
                 }}
                 transition={{ type: 'spring', stiffness: 150, damping: 15 }}
             />
@@ -62,7 +62,7 @@ const CustomCursor = () => {
           left: 0;
           width: 32px;
           height: 32px;
-          border: 1px solid rgba(255, 255, 255, 0.5);
+          border: 1px solid var(--text-tertiary);
           border-radius: 50%;
           pointer-events: none;
           z-index: 9998;

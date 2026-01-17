@@ -1,94 +1,113 @@
-.contact-section {
-    text-align: center;
-}
+/* CONTACT SECTION - SUNNY SERIF */
 
-.contact-container {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 2rem;
-    max-width: 900px;
-    margin: 0 auto;
-}
-
-.contact-cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
-}
-
-.contact-card {
-    background: var(--card-bg);
-    padding: 2.5rem 2rem;
-    border-radius: 16px;
-    border: 1px solid var(--border-color);
-    transition: transform 0.3s ease;
+.contact-simple-grid {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    min-height: 200px;
+    gap: 3rem;
+    max-width: 600px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
 }
 
-.contact-card:hover {
-    transform: translateY(-5px);
-    border-color: var(--primary-color);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-}
-
-.contact-icon {
-    background: rgba(59, 130, 246, 0.1);
-    width: 64px;
-    height: 64px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 1.5rem;
-    color: var(--primary-color);
-    transition: all 0.3s;
-}
-
-.contact-card:hover .contact-icon {
-    background: var(--primary-color);
-    color: white;
-    transform: scale(1.1);
-}
-
-.contact-info h3 {
-    font-size: 1.2rem;
+.contact-input-group {
+    width: 100%;
+    position: relative;
     margin-bottom: 0.5rem;
-    color: var(--text-color);
 }
 
-.contact-value {
-    font-size: 1.1rem;
-    color: #fff;
-    font-weight: 600;
+.contact-label {
+    position: absolute;
+    left: 1rem;
+    top: 1rem;
+    font-size: 1rem;
+    color: var(--text-secondary);
+    pointer-events: none;
+    transition: all 0.2s ease;
+    background: transparent;
+    padding: 0 0.2rem;
 }
 
-.social-links {
-    display: flex;
-    justify-content: center;
-    gap: 1.5rem;
-    margin-top: 3rem;
+/* Floating Label Logic */
+.contact-input:focus~.contact-label,
+.contact-input:not(:placeholder-shown)~.contact-label,
+.contact-textarea:focus~.contact-label,
+.contact-textarea:not(:placeholder-shown)~.contact-label {
+    top: -0.6rem;
+    left: 0.8rem;
+    font-size: 0.8rem;
+    color: var(--primary-color);
+    background: white;
+    font-weight: 700;
 }
 
-.social-btn {
-    background: var(--card-bg);
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--text-muted);
+.contact-input,
+.contact-textarea {
+    width: 100%;
+    padding: 1rem;
     border: 1px solid var(--border-color);
-    transition: all 0.3s;
+    border-radius: var(--radius-sm);
+    background: white;
+    font-family: 'Nunito', sans-serif;
+    font-size: 1rem;
+    transition: all 0.2s ease;
 }
 
-.social-btn:hover {
-    background: var(--primary-color);
-    color: white;
-    transform: translateY(-5px);
+.contact-input:focus,
+.contact-textarea:focus {
+    outline: none;
     border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(253, 196, 53, 0.1);
+}
+
+.contact-textarea {
+    resize: vertical;
+    min-height: 150px;
+}
+
+.contact-submit-btn {
+    align-self: flex-end;
+    padding: 0.8rem 2.5rem;
+    background: var(--primary-color);
+    color: var(--text-primary);
+    border-radius: var(--radius-sm);
+    font-weight: 700;
+    font-size: 1.1rem;
+    transition: all 0.2s;
+    box-shadow: var(--shadow-sm);
+    position: relative;
+    overflow: hidden;
+}
+
+.contact-submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+    background: var(--primary-hover);
+}
+
+.contact-button-text {
+    position: relative;
+    z-index: 1;
+}
+
+.contact-info-footer {
+    display: flex;
+    gap: 2rem;
+    margin-top: 2rem;
+    justify-content: center;
+}
+
+.footer-icon-link {
+    color: var(--text-tertiary);
+    transition: all 0.2s;
+    padding: 0.5rem;
+    border-radius: 50%;
+    background: transparent;
+}
+
+.footer-icon-link:hover {
+    color: var(--primary-color);
+    background: var(--surface-highlight);
+    transform: translateY(-2px);
 }

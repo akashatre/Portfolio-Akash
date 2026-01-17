@@ -17,7 +17,7 @@ const ScrollProgress = () => {
                 left: 0,
                 right: 0,
                 height: '4px',
-                background: 'linear-gradient(90deg, var(--primary-color), var(--accent-color))',
+                background: 'var(--primary-color)',
                 transformOrigin: '0%',
                 zIndex: 1001, // Above navbar
             }}

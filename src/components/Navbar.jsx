@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import { Menu, X, Code2 } from 'lucide-react';
+import { Menu, X, Lock } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import './Navbar.css';
 
@@ -18,9 +19,11 @@ const Navbar = () => {
     const navLinks = [
         { name: 'Home', href: '#home' },
         { name: 'About', href: '#about' },
+        { name: 'Services', href: '#services' },
         { name: 'Skills', href: '#skills' },
         { name: 'Experience', href: '#experience' },
         { name: 'Projects', href: '#projects' },
+        { name: 'Websites', href: '#websites' },
         { name: 'Contact', href: '#contact' },
     ];
 
@@ -28,7 +31,6 @@ const Navbar = () => {
         <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
             <div className="nav-container">
                 <a href="#home" className="logo">
-                    <Code2 size={32} className="accent" />
                     <span>Akash Atre<span className="accent">.</span></span>
                 </a>
 
@@ -42,6 +44,9 @@ const Navbar = () => {
                     <a href="https://drive.google.com/file/d/14ahVsI7Z_BAmQBa1Y6vOIFHQAYhRFojo/view?usp=sharing" target="_blank" rel="noopener noreferrer" className="btn" style={{ fontSize: '0.9rem', padding: '0.6rem 1.2rem' }}>
                         Resume
                     </a>
+                    <Link to="/login" className="nav-link" aria-label="Admin Login">
+                        <Lock size={18} />
+                    </Link>
                 </div>
 
                 {/* Mobile Menu Button */}
@@ -72,6 +77,9 @@ const Navbar = () => {
                         <a href="https://drive.google.com/file/d/14ahVsI7Z_BAmQBa1Y6vOIFHQAYhRFojo/view?usp=sharing" target="_blank" rel="noopener noreferrer" className="btn" style={{ textAlign: 'center' }}>
                             Resume
                         </a>
+                        <Link to="/login" onClick={() => setIsOpen(false)} className="nav-link" style={{ display: 'flex', justifyContent: 'center', gap: '0.5rem' }}>
+                            <Lock size={18} /> Admin
+                        </Link>
                     </motion.div>
                 )}
             </AnimatePresence>
