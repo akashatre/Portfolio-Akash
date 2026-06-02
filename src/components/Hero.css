@@ -257,11 +257,19 @@
     50%      { transform: translateY(-6px); opacity: 1; }
 }
 
+@media (max-width: 899px) {
+    .bruno-left {
+        border-right: none;
+        border-bottom: 1px solid var(--border-color);
+        padding: 2.5rem 1.25rem 2rem;
+    }
+}
+
 @media (max-width: 768px) {
     .bruno-name { font-size: 2.2rem; }
     .bruno-stat-num { font-size: 2.5rem; }
     .bruno-stat { padding: 1.25rem 1rem; gap: 0.5rem; }
-    .bruno-photo-col { min-height: 380px; }
+    .bruno-photo-col { min-height: 350px; }
 }
 
 @media (max-width: 540px) {
@@ -277,5 +285,18 @@
     }
     .bruno-stat:last-child {
         border-bottom: none;
+    }
+}
+
+@media (max-width: 360px) {
+    .bruno-photo-wrap {
+        width: 280px;
+        height: 370px;
+    }
+    .bruno-photo {
+        border-radius: 130px;
+    }
+    .bruno-photo-wrap::after {
+        border-radius: 140px;
     }
 }

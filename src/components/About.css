@@ -209,3 +209,16 @@
     0%, 100% { box-shadow: 0 0 2px #10B981; }
     50% { box-shadow: 0 0 10px rgba(16, 185, 129, 0.6); }
 }
+
+@media (max-width: 360px) {
+    .about-photo-frame-inner {
+        width: 280px;
+        height: 370px;
+    }
+    .about-profile-image {
+        border-radius: 130px;
+    }
+    .about-photo-frame-inner::after {
+        border-radius: 140px;
+    }
+}

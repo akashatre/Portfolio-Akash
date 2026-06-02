@@ -69,6 +69,12 @@ section {
     border-bottom: 1px solid var(--border-color) !important;
 }
 
+@media (max-width: 768px) {
+    section {
+        padding: 4rem 1.25rem !important;
+    }
+}
+
 /* ----------------------------------------------------------------
    MINIMALIST EDITORIAL GRID CARDS (BRUNO CARD STYLE)
    ---------------------------------------------------------------- */
