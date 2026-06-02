@@ -1,78 +1,39 @@
-import { useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
+import { useEffect, useRef } from 'react';
 
 const CustomCursor = () => {
-    const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-    const [isHovering, setIsHovering] = useState(false);
+    const cursorRef = useRef(null);
+    const dotRef = useRef(null);
 
     useEffect(() => {
-        const updateMousePosition = (e) => {
-            setMousePosition({ x: e.clientX, y: e.clientY });
-        };
-
-        const handleMouseOver = (e) => {
-            if (e.target.tagName === 'A' || e.target.tagName === 'BUTTON' || e.target.closest('.interactive')) {
-                setIsHovering(true);
-            } else {
-                setIsHovering(false);
+        const move = (e) => {
+            if (cursorRef.current) {
+                cursorRef.current.style.left = e.clientX + 'px';
+                cursorRef.current.style.top  = e.clientY + 'px';
+            }
+            if (dotRef.current) {
+                dotRef.current.style.left = e.clientX + 'px';
+                dotRef.current.style.top  = e.clientY + 'px';
             }
         };
-
-        window.addEventListener('mousemove', updateMousePosition);
-        document.addEventListener('mouseover', handleMouseOver);
-
-        return () => {
-            window.removeEventListener('mousemove', updateMousePosition);
-            document.removeEventListener('mouseover', handleMouseOver);
-        };
+        window.addEventListener('mousemove', move);
+        return () => window.removeEventListener('mousemove', move);
     }, []);
 
     return (
         <>
-            <motion.div
-                className="cursor-dot"
-                animate={{ x: mousePosition.x - 4, y: mousePosition.y - 4 }}
-                transition={{ type: 'tween', ease: 'backOut', duration: 0 }}
-            />
-            <motion.div
-                className="cursor-ring"
-                animate={{
-                    x: mousePosition.x - 16,
-                    y: mousePosition.y - 16,
-                    scale: isHovering ? 1.5 : 1,
-                    borderColor: isHovering ? 'var(--primary-color)' : 'var(--text-tertiary)'
-                }}
-                transition={{ type: 'spring', stiffness: 150, damping: 15 }}
-            />
-            <style>{`
-        .cursor-dot {
-          position: fixed;
-          top: 0;
-          left: 0;
-          width: 8px;
-          height: 8px;
-          background-color: var(--primary-color);
-          border-radius: 50%;
-          pointer-events: none;
-          z-index: 9999;
-        }
-        .cursor-ring {
-          position: fixed;
-          top: 0;
-          left: 0;
-          width: 32px;
-          height: 32px;
-          border: 1px solid var(--text-tertiary);
-          border-radius: 50%;
-          pointer-events: none;
-          z-index: 9998;
-        }
-        @media (match-media: (pointer: coarse)) {
-          .cursor-dot, .cursor-ring {
-            display: none;
-          }
-        }
-      `}</style>
+            <div ref={cursorRef} style={{
+                position: 'fixed', pointerEvents: 'none', zIndex: 9999,
+                width: 24, height: 24, borderRadius: '50%',
+                border: '1px solid rgba(250, 250, 250, 0.15)',
+                transform: 'translate(-50%,-50%)',
+                transition: 'left 0.1s ease-out, top 0.1s ease-out',
+            }} />
+            <div ref={dotRef} style={{
+                position: 'fixed', pointerEvents: 'none', zIndex: 9999,
+                width: 5, height: 5, borderRadius: '50%',
+                background: 'var(--primary-color)',
+                transform: 'translate(-50%,-50%)',
+            }} />
         </>
     );
 };

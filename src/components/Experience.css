@@ -1,205 +1,133 @@
-/* EXPERIENCE SECTION - DUAL TRACK STYLE */
-
-.experience-section-container {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 4rem;
+/* ================================================================
+   EXPERIENCE & EDUCATION — Bruno Table Style Rows
+   ================================================================ */
+.experience-section {
+    position: relative;
+    background: #0F0E0E;
+    border-bottom: 1px solid var(--border-color);
 }
 
-@media (min-width: 992px) {
-    .experience-section-container {
-        grid-template-columns: 1.2fr 0.8fr;
-        /* Work gets more space */
-        gap: 5rem;
+.experience-tables-container {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+    margin-top: 3rem;
+}
+
+.exp-table-group {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.exp-table-group-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.8rem;
+    font-weight: 400;
+    color: var(--primary-color);
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--border-color);
+    letter-spacing: -0.01em;
+}
+
+.experience-table {
+    display: flex;
+    flex-direction: column;
+}
+
+.experience-table-row {
+    display: grid;
+    grid-template-columns: 200px 1.5fr 2.5fr;
+    gap: 2rem;
+    padding: 2.2rem 0.5rem;
+    border-bottom: 1px solid var(--border-color);
+    transition: background 0.3s ease;
+}
+
+.experience-table-row:hover {
+    background: rgba(255, 255, 255, 0.015);
+}
+
+/* Column 1: Period */
+.exp-col-period {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+}
+
+/* Column 2: Role / Institution */
+.exp-col-role {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+}
+
+.exp-role-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.35rem;
+    font-weight: 400;
+    line-height: 1.2;
+    color: var(--text-primary);
+}
+
+.exp-role-sub {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 0.88rem;
+    color: var(--text-secondary);
+}
+
+/* Column 3: Description & Skills */
+.exp-col-desc {
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+}
+
+.exp-desc-text {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+}
+
+.exp-skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+}
+
+.exp-skill-tag {
+    font-size: 0.72rem;
+    color: var(--primary-color);
+    background: rgba(198, 176, 153, 0.06);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    padding: 2px 7px;
+    font-weight: 500;
+}
+
+/* --- Responsive Table Styling --- */
+@media (max-width: 900px) {
+    .experience-table-row {
+        grid-template-columns: 160px 1.2fr 1.8fr;
+        gap: 1.5rem;
     }
 }
 
-/* SECTION HEADERS WITH ICONS */
-.column-header {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    margin-bottom: 2.5rem;
-    padding-bottom: 1rem;
-    border-bottom: 2px solid var(--border-color);
-}
-
-.column-icon-box {
-    width: 48px;
-    height: 48px;
-    background: var(--primary-color);
-    color: var(--text-primary);
-    border-radius: var(--radius-sm);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: var(--shadow-sm);
-}
-
-.column-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.8rem;
-    font-weight: 700;
-}
-
-/* WORK CARDS (Left Side) - Detailed & Active */
-.work-list {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-}
-
-.work-card {
-    background: white;
-    border-radius: var(--radius-lg);
-    padding: 2rem;
-    box-shadow: var(--shadow-sm);
-    border-left: 5px solid var(--primary-color);
-    transition: all 0.3s ease;
-}
-
-.work-card:hover {
-    transform: translateX(10px);
-    box-shadow: var(--shadow-md);
-}
-
-.work-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    margin-bottom: 1rem;
-    flex-wrap: wrap;
-    gap: 1rem;
-}
-
-.work-role {
-    font-size: 1.35rem;
-    font-weight: 700;
-    color: var(--text-primary);
-    margin-bottom: 0.3rem;
-}
-
-.work-company {
-    font-size: 1rem;
-    color: var(--text-secondary);
-    font-weight: 600;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-}
-
-.work-period {
-    background: var(--surface-highlight);
-    padding: 0.3rem 0.8rem;
-    border-radius: var(--radius-sm);
-    font-size: 0.85rem;
-    font-weight: 700;
-    color: var(--text-primary);
-}
-
-.work-desc {
-    color: var(--text-secondary);
-    line-height: 1.7;
-    margin-bottom: 1.5rem;
-}
-
-.work-desc li {
-    margin-bottom: 0.5rem;
-    padding-left: 1.2rem;
-    position: relative;
-}
-
-.work-desc li::before {
-    content: '•';
-    color: var(--primary-color);
-    position: absolute;
-    left: 0;
-    font-weight: bold;
-}
-
-.work-tech-stack {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.6rem;
-}
-
-.work-tag {
-    font-size: 0.75rem;
-    padding: 0.25rem 0.6rem;
-    background: #F3F4F6;
-    border: 1px solid #E5E7EB;
-    border-radius: 4px;
-    color: var(--text-secondary);
-    font-weight: 600;
-}
-
-/* EDUCATION LIST (Right Side) - Minimal Timeline */
-.edu-list {
-    position: relative;
-    padding-left: 2rem;
-    border-left: 1px dashed var(--border-color);
-}
-
-.edu-item {
-    position: relative;
-    margin-bottom: 3.5rem;
-}
-
-.edu-item:last-child {
-    margin-bottom: 0;
-}
-
-/* Timeline Dot */
-.edu-dot {
-    position: absolute;
-    left: -2.6rem;
-    /* Adjust based on padding/border width */
-    top: 0;
-    width: 20px;
-    height: 20px;
-    background: white;
-    border: 3px solid var(--primary-color);
-    border-radius: 50%;
-    z-index: 2;
-}
-
-.edu-card {
-    background: rgba(255, 255, 255, 0.6);
-    padding: 1.5rem;
-    border-radius: var(--radius-md);
-    border: 1px solid transparent;
-    transition: all 0.3s ease;
-}
-
-.edu-item:hover .edu-card {
-    background: white;
-    border-color: var(--border-color);
-    box-shadow: var(--shadow-sm);
-    transform: translateY(-5px);
-}
-
-.edu-degree {
-    font-size: 1.2rem;
-    font-weight: 700;
-    color: var(--text-primary);
-    margin-bottom: 0.3rem;
-}
-
-.edu-school {
-    font-size: 0.95rem;
-    color: var(--text-secondary);
-    font-weight: 600;
-    margin-bottom: 0.5rem;
-}
-
-.edu-meta {
-    display: flex;
-    justify-content: space-between;
-    font-size: 0.85rem;
-    color: var(--text-tertiary);
-}
-
-.edu-grade {
-    font-weight: 700;
-    color: var(--primary-color);
+@media (max-width: 768px) {
+    .experience-table-row {
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+        padding: 1.5rem 0.25rem;
+    }
+    
+    .exp-col-period {
+        font-size: 0.85rem;
+        color: var(--accent-color);
+    }
+    
+    .exp-col-desc {
+        margin-top: 0.25rem;
+    }
 }

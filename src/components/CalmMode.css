@@ -1,0 +1,104 @@
+/* ================================================================
+   CALM MODE — Soothing Nature Overlay Styling
+   ================================================================ */
+.calm-snow-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 9998; /* Under cursor, but over text */
+    pointer-events: none;
+}
+
+.calm-mode-controls {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.calm-toggle-btn {
+    background: #161515;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 0.6rem 1rem;
+    color: var(--text-secondary);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+}
+
+.calm-toggle-btn:hover {
+    color: var(--text-primary);
+    border-color: var(--text-secondary);
+}
+
+.calm-toggle-btn.active {
+    color: var(--bg-color);
+    background: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.calm-sound-btn {
+    background: #161515;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-secondary);
+    cursor: pointer;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+}
+
+.calm-sound-btn:hover {
+    color: var(--text-primary);
+    border-color: var(--text-secondary);
+}
+
+/* Subtle Vignette shift when Calm Mode is active */
+body.calm-mode-active::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 9997;
+    pointer-events: none;
+    background: radial-gradient(circle at center, transparent 30%, rgba(15, 14, 14, 0.25) 100%);
+    transition: opacity 1.5s ease-in-out;
+}
+
+/* Calm button icon spin */
+.calm-btn-icon {
+    display: inline-block;
+    font-size: 0.9rem;
+    transition: transform 0.8s ease;
+}
+
+.calm-toggle-btn.active .calm-btn-icon {
+    animation: slowSpin 12s linear infinite;
+}
+
+@keyframes slowSpin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@media (max-width: 600px) {
+    .calm-mode-controls {
+        bottom: 1.25rem;
+        right: 1.25rem;
+    }
+}

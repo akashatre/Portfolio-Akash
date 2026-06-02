@@ -25,7 +25,7 @@ const services = [
 
 const Services = () => {
     return (
-        <section id="services" style={{ background: '#F9FAFB' }}>
+        <section id="services" style={{ background: 'transparent' }}>
             <div className="container">
                 <div className="section-header">
                     <h2 className="section-title">How I Can Help</h2>

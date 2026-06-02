@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Lock } from 'lucide-react';
 
-const ADMIN_PASSWORD = "Meaks@0241"; // <--- CHANGE YOUR PASSWORD HERE
+const ADMIN_PASSWORD = "Aks@0241"; // <--- CHANGE YOUR PASSWORD HERE
 
 const Login = () => {
     const [password, setPassword] = useState('');

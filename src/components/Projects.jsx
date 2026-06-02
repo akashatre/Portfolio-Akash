@@ -1,66 +1,64 @@
 import { motion } from 'framer-motion';
-import { ExternalLink, Database, BarChart2, Globe, Code, Smartphone, Layout } from 'lucide-react';
+import { ArrowUpRight, Github } from 'lucide-react';
 import { useProjects } from '../context/ProjectContext';
 import './Projects.css';
 
-const ICON_MAP = {
-    "BarChart2": <BarChart2 size={80} />,
-    "Globe": <Globe size={80} />,
-    "Database": <Database size={80} />,
-    "Code": <Code size={80} />,
-    "Smartphone": <Smartphone size={80} />,
-    "Layout": <Layout size={80} />
-};
+const NUMS = ['01','02','03','04','05'];
+
+const ProjectRow = ({ project, index }) => (
+    <motion.div
+        className="proj-row"
+        initial={{ opacity:0, y:20 }}
+        whileInView={{ opacity:1, y:0 }}
+        transition={{ duration:0.5, delay:index*0.08, ease:[0.16,1,0.3,1] }}
+        viewport={{ once:true, margin:'-40px' }}
+    >
+        <span className="proj-num">{NUMS[index] || `0${index+1}`}</span>
+
+        <div className="proj-main">
+            <h3 className="proj-title">{project.title}</h3>
+            <p className="proj-desc">{project.desc}</p>
+        </div>
+
+        <div className="proj-tags">
+            {project.tech.slice(0,3).map((t,i) => (
+                <span key={i} className="proj-tag">{t}</span>
+            ))}
+        </div>
+
+        <div className="proj-links">
+            {project.github && (
+                <a href={project.github} target="_blank" rel="noopener noreferrer"
+                    className="proj-link" title="GitHub">
+                    <Github size={16} />
+                </a>
+            )}
+            {project.link && project.link !== project.github && (
+                <a href={project.link} target="_blank" rel="noopener noreferrer"
+                    className="proj-link" title="Live">
+                    <ArrowUpRight size={16} />
+                </a>
+            )}
+        </div>
+    </motion.div>
+);
 
 const Projects = () => {
     const { projects } = useProjects();
-
+    const visibleProjects = projects.filter(p => p.visible !== false);
     return (
-        <section id="projects">
+        <section id="projects" className="projects-section">
             <div className="container">
-                <div className="section-header">
-                    <h2 className="section-title">Projects</h2>
-                    <div style={{ width: '60px', height: '4px', background: 'var(--primary-color)', margin: '0.5rem auto 1rem' }}></div>
-                    <p className="section-subtitle">A selection of my recent work.</p>
-                </div>
+                <motion.div className="section-header"
+                    initial={{ opacity:0, y:20 }} whileInView={{ opacity:1, y:0 }}
+                    transition={{ duration:0.5 }} viewport={{ once:true }}>
+                    <span className="section-eyebrow">PORTFOLIO</span>
+                    <h2 className="section-title">Latest Projects</h2>
+                    <p className="section-subtitle">A collection of data analytics software, pipelines, and tools.</p>
+                </motion.div>
 
-                <div className="projects-list">
-                    {projects.map((project, index) => (
-                        <motion.div
-                            key={project.id || index}
-                            className="project-item"
-                            initial={{ opacity: 0, y: 40 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.6 }}
-                            viewport={{ once: true, margin: "-100px" }}
-                        >
-                            {/* Visual Side */}
-                            <div className="project-visual">
-                                <div className="project-bg-shape"></div>
-                                <div className="project-icon-large">
-                                    {ICON_MAP[project.iconName] || <Code size={80} />}
-                                </div>
-                            </div>
-
-                            {/* Content Side */}
-                            <div className="project-content">
-                                <h3 className="project-title">{project.title}</h3>
-                                <p className="project-desc">{project.desc}</p>
-
-                                <div className="project-tags">
-                                    {project.tech.map((t, i) => (
-                                        <span key={i} className="tech-tag">{t}</span>
-                                    ))}
-                                </div>
-
-                                {project.link && (
-                                    <a href={project.link} target="_blank" rel="noopener noreferrer" className="project-link">
-                                        View Project
-                                    </a>
-                                )}
-                            </div>
-                        </motion.div>
-                    ))}
+                <div className="proj-list">
+                    {visibleProjects.map((p, i) => <ProjectRow key={p.id||i} project={p} index={i} />)}
                 </div>
             </div>
         </section>

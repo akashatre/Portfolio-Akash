@@ -1,39 +1,362 @@
-/* GLASSMORPHISM GLOBAL THEME */
+/* ================================================================
+   BRUNO PORTFOLIO EDITORIAL STYLE GUIDE (LOGAN DANG BRUNO DESIGN)
+   ================================================================ */
 
-/* Apply Glass Effect to generic panels if needed */
-.glass-panel {
-    background: rgba(30, 41, 59, 0.4) !important;
-    backdrop-filter: blur(16px) !important;
-    -webkit-backdrop-filter: blur(16px) !important;
-    border: 1px solid rgba(255, 255, 255, 0.1) !important;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1) !important;
-    border-radius: 20px !important;
+:root, [data-theme="dark"], [data-theme="light"] {
+    --bg-color: #0F0E0E !important; /* Soft warm charcoal black */
+    --surface-color: #161515 !important; /* Warm dark gray card surface */
+    --surface-highlight: #222121 !important; 
+    --surface-glass: rgba(22, 21, 21, 0.85) !important;
+    --text-primary: #FAFAFA !important; /* Creamy white */
+    --text-secondary: #A3A3A3 !important; /* Muted ash gray */
+    --text-tertiary: #6E6D6D !important; /* Deep neutral gray */
+    --border-color: rgba(255, 255, 255, 0.08) !important; /* Clean thin border */
+    --primary-color: #C6B099 !important; /* Muted beige / taupe */
+    --accent-color: #B46E53 !important; /* Burnt terracotta */
+
+    /* Index.css overrides for Bruno theme consistency */
+    --bg: #0F0E0E !important;
+    --bg-2: #161515 !important;
+    --surface: rgba(255, 255, 255, 0.04) !important;
+    --gold: #C6B099 !important; /* Taupe/Beige */
+    --gold-dim: rgba(198, 176, 153, 0.15) !important;
+    --t1: #FAFAFA !important; /* Cream */
+    --t2: #A3A3A3 !important; /* Ash gray */
+    --t3: #6E6D6D !important; /* Deep gray */
+    --border: rgba(255, 255, 255, 0.08) !important;
 }
 
-/* Typography updates for Space Theme */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    color: #ffffff;
-    text-shadow: 0 0 20px rgba(99, 102, 241, 0.2);
-    /* Subtle glow */
+/* Base Typographies */
+h1, h2, h3, h4, h5, h6, .logo {
+    font-family: 'Cormorant Garamond', 'Amiri', serif !important;
+    font-weight: 400 !important; /* Editorial serif look */
+    letter-spacing: -0.01em !important;
+    color: var(--text-primary) !important;
+    text-shadow: none !important; /* Remove all cyber glows */
 }
 
-/* Scrollbar to match space */
-::-webkit-scrollbar-track {
-    background: #030014 !important;
+body, p, span, li, a, button, input, textarea {
+    font-family: 'Plus Jakarta Sans', 'Inter', sans-serif !important;
+    font-size: 0.94rem;
+    color: var(--text-secondary);
 }
 
-::-webkit-scrollbar-thumb {
-    background: rgba(99, 102, 241, 0.4) !important;
-    border-radius: 10px;
-    border: 2px solid #030014;
-    /* Padding effect */
+body {
+    background-color: #0F0E0E !important;
+    background-image: none !important;
+    color: var(--text-secondary) !important;
+    overflow-x: hidden;
 }
 
-::-webkit-scrollbar-thumb:hover {
+/* Subtle Matte Noise overlay representing editorial paper texture */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    z-index: 9999;
+    pointer-events: none;
+    opacity: 0.018;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* Sections */
+section {
+    background: #0F0E0E !important;
+    position: relative;
+    z-index: 2;
+    padding: 6.5rem 1.5rem !important;
+    border-bottom: 1px solid var(--border-color) !important;
+}
+
+/* ----------------------------------------------------------------
+   MINIMALIST EDITORIAL GRID CARDS (BRUNO CARD STYLE)
+   ---------------------------------------------------------------- */
+.glass-panel,
+.about-stat-card,
+.skill-category-card,
+.work-card,
+.edu-card,
+.project-card,
+.service-card,
+.metric-card,
+.analytics-dashboard,
+.website-card,
+.bento-card {
+    position: relative !important;
+    background: #161515 !important; /* Flat card surface */
+    background-image: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    border: 1px solid var(--border-color) !important;
+    box-shadow: none !important; /* No shadows */
+    border-radius: 8px !important; /* Sharp elegant corners */
+    clip-path: none !important;
+    transition: border-color 0.3s ease, background 0.3s ease !important;
+}
+
+/* Clean border line hover transitions */
+.about-stat-card:hover,
+.skill-category-card:hover,
+.work-card:hover,
+.edu-card:hover,
+.project-card:hover,
+.service-card:hover,
+.metric-card:hover,
+.website-card:hover {
+    border-color: var(--primary-color) !important; /* Light taupe border */
+    background: #1D1C1C !important;
+    box-shadow: none !important;
+    transform: none !important; /* Disable translates */
+}
+
+/* Remove hover bracket classes completely */
+.about-stat-card::before, .about-stat-card::after,
+.skill-category-card::before, .skill-category-card::after,
+.work-card::before, .work-card::after,
+.edu-card::before, .edu-card::after,
+.project-card::before, .project-card::after,
+.service-card::before, .service-card::after,
+.metric-card::before, .metric-card::after,
+.website-card::before, .website-card::after {
+    display: none !important;
+}
+
+/* Bio tag styling */
+.bento-tag, .tech-tag, .work-tag, .web-tag {
+    color: var(--primary-color) !important;
+    background: rgba(198, 176, 153, 0.08) !important;
+    border: 1px solid rgba(198, 176, 153, 0.2) !important;
+    border-radius: 4px !important;
+    font-size: 0.72rem !important;
+    font-weight: 500 !important;
+    letter-spacing: 0.5px !important;
+    padding: 3px 8px !important;
+}
+
+/* Title Font Sizes & Weights */
+.section-title {
+    font-size: clamp(2.2rem, 6vw, 3.2rem) !important;
+    font-weight: 400 !important;
+    color: var(--text-primary) !important;
+}
+
+.section-eyebrow {
+    font-family: 'Plus Jakarta Sans', sans-serif !important;
+    font-size: 0.75rem !important;
+    color: var(--accent-color) !important; /* Burnt terracotta eyebrow tags */
+    letter-spacing: 1px !important;
+    font-weight: 600 !important;
+}
+
+/* Underline separator */
+.section-title-underline {
+    display: none !important; /* Remove cyber under-bars */
+}
+
+/* Navigation Menu */
+.navbar {
+    background: #0F0E0E !important;
+    border-bottom: 1px solid var(--border-color) !important;
+}
+
+.navbar.scrolled {
+    background: #0F0E0E !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2) !important;
+}
+
+.nav-link {
+    color: var(--text-secondary) !important;
+    font-weight: 500 !important;
+}
+
+.nav-link.active, .nav-link:hover {
+    color: var(--text-primary) !important;
+}
+
+/* Project previews */
+.website-preview {
+    background: #222121 !important;
+    border-bottom: 1px solid var(--border-color) !important;
+}
+
+.browser-header {
+    background: #1C1B1B !important;
+    border-bottom: 1px solid var(--border-color) !important;
+}
+
+/* Progress bar resets */
+.scroll-progress-bar {
     background: var(--primary-color) !important;
+    box-shadow: none !important;
+}
+
+.skill-bar-track {
+    background: #222121 !important;
+    border-radius: 2px !important;
+    height: 4px !important;
+}
+
+.skill-bar-fill {
+    background: var(--primary-color) !important;
+    box-shadow: none !important;
+    height: 100% !important;
+    border-radius: 2px !important;
+}
+
+/* Contact widgets style */
+.contact-input,
+.contact-textarea {
+    background: #161515 !important;
+    border: 1px solid var(--border-color) !important;
+    color: var(--text-primary) !important;
+    border-radius: 4px !important;
+}
+
+.contact-input:focus,
+.contact-textarea:focus {
+    border-color: var(--primary-color) !important;
+    box-shadow: none !important;
+}
+
+.contact-input:focus~.contact-label,
+.contact-input:not(:placeholder-shown)~.contact-label,
+.contact-textarea:focus~.contact-label,
+.contact-textarea:not(:placeholder-shown)~.contact-label {
+    background: #161515 !important;
+    color: var(--primary-color) !important;
+    border-radius: 2px !important;
+}
+
+/* Nature gradient overrides (No color-changing animations) */
+.gradient-text {
+    background: none !important;
+    -webkit-background-clip: unset !important;
+    -webkit-text-fill-color: unset !important;
+    background-clip: unset !important;
+    color: var(--primary-color) !important;
+}
+
+/* Editorial Minimalist Buttons */
+.btn, .hero-btn-primary {
+    background: var(--text-primary) !important; /* Off-white solid fill */
+    color: var(--bg-color) !important;
+    font-weight: 600 !important;
+    border-radius: 6px !important;
+    box-shadow: none !important;
+    transition: opacity 0.2s ease !important;
+}
+
+.btn:hover, .hero-btn-primary:hover {
+    opacity: 0.9 !important;
+    box-shadow: none !important;
+}
+
+.btn-outline, .hero-btn-secondary {
+    background: transparent !important;
+    border: 1px solid var(--border-color) !important;
+    color: var(--text-primary) !important;
+    border-radius: 6px !important;
+}
+
+.btn-outline:hover, .hero-btn-secondary:hover {
+    border-color: var(--text-primary) !important;
+    color: var(--text-primary) !important;
+}
+
+/* ================================================================
+   PEACEFUL CALM MODE — 3D UNIVERSE VISIBILITY OVERRIDES
+   ================================================================ */
+body.calm-mode-active {
+    --bg-color: transparent !important;
+    --bg: transparent !important;
+    --bg-2: transparent !important;
+    background-color: #060505 !important; /* Deep cosmic charcoal space base */
+}
+
+body.calm-mode-active section,
+body.calm-mode-active footer,
+body.calm-mode-active nav,
+body.calm-mode-active .navbar,
+body.calm-mode-active .navbar.scrolled,
+body.calm-mode-active .about-section,
+body.calm-mode-active .skills-section,
+body.calm-mode-active .experience-section,
+body.calm-mode-active .projects-section,
+body.calm-mode-active .services-section,
+body.calm-mode-active .websites-section,
+body.calm-mode-active .contact-section {
+    background: transparent !important;
+    border-color: rgba(255, 255, 255, 0.05) !important;
+}
+
+/* Make grid cards and panel elements glassmorphic/translucent in calm mode so the solar system shows through */
+body.calm-mode-active .glass-panel,
+body.calm-mode-active .about-stat-card,
+body.calm-mode-active .skill-category-card,
+body.calm-mode-active .work-card,
+body.calm-mode-active .edu-card,
+body.calm-mode-active .project-card,
+body.calm-mode-active .service-card,
+body.calm-mode-active .metric-card,
+body.calm-mode-active .website-card,
+body.calm-mode-active .bento-card,
+body.calm-mode-active .code-window,
+body.calm-mode-active .console-container,
+body.calm-mode-active .bruno-left,
+body.calm-mode-active .bruno-stats,
+body.calm-mode-active .bruno-stat,
+body.calm-mode-active .experience-table-row,
+body.calm-mode-active .proj-row,
+body.calm-mode-active .skills-grid,
+body.calm-mode-active .services-list {
+    background: rgba(22, 21, 21, 0.65) !important;
+    backdrop-filter: blur(8px) !important;
+    -webkit-backdrop-filter: blur(8px) !important;
+    border-color: rgba(198, 176, 153, 0.15) !important;
+}
+
+/* Hover effects for glassmorphic elements in calm mode */
+body.calm-mode-active .glass-panel:hover,
+body.calm-mode-active .about-stat-card:hover,
+body.calm-mode-active .skill-category-card:hover,
+body.calm-mode-active .work-card:hover,
+body.calm-mode-active .edu-card:hover,
+body.calm-mode-active .project-card:hover,
+body.calm-mode-active .service-card:hover,
+body.calm-mode-active .metric-card:hover,
+body.calm-mode-active .website-card:hover,
+body.calm-mode-active .bento-card:hover,
+body.calm-mode-active .experience-table-row:hover,
+body.calm-mode-active .proj-row:hover {
+    background: rgba(29, 28, 28, 0.75) !important;
+    border-color: var(--primary-color) !important;
+}
+
+/* Ensure prompt/console and tech tags are readable and look glowing/atmospheric */
+body.calm-mode-active .bento-tag,
+body.calm-mode-active .tech-tag,
+body.calm-mode-active .work-tag,
+body.calm-mode-active .web-tag,
+body.calm-mode-active .skill-badge,
+body.calm-mode-active .exp-skill-tag,
+body.calm-mode-active .proj-tag {
+    background: rgba(198, 176, 153, 0.12) !important;
+    border-color: rgba(198, 176, 153, 0.25) !important;
+    color: var(--primary-color) !important;
+    backdrop-filter: blur(4px);
+}
+
+/* Prevent filled buttons and active toggles from having transparent text inside Calm Mode */
+body.calm-mode-active .btn,
+body.calm-mode-active .hero-btn-primary,
+body.calm-mode-active .bruno-btn-fill,
+body.calm-mode-active .contact-submit-btn,
+body.calm-mode-active .sandbox-run-btn,
+body.calm-mode-active .calm-toggle-btn.active {
+    color: #0F0E0E !important; /* Force readable dark charcoal text */
+}
+
+body.calm-mode-active .calm-toggle-btn.active {
+    background: var(--primary-color) !important; /* Keep active toggle button background beige */
 }

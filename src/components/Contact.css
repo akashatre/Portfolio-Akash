@@ -1,113 +1,123 @@
-/* CONTACT SECTION - SUNNY SERIF */
+/* ================================================================
+   CONTACT — Bruno Minimalist Form Layout
+   ================================================================ */
+#contact, .contact-section {
+    position: relative;
+    background: #0F0E0E;
+    border-bottom: 1px solid var(--border-color);
+}
 
 .contact-simple-grid {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 3rem;
-    max-width: 600px;
-    margin: 0 auto;
-    position: relative;
-    z-index: 1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+    max-width: 680px;
+    margin: 2rem auto 0;
+}
+
+@media (max-width: 600px) {
+    .contact-simple-grid {
+        grid-template-columns: 1fr;
+    }
 }
 
 .contact-input-group {
-    width: 100%;
     position: relative;
-    margin-bottom: 0.5rem;
+    grid-column: span 1;
 }
 
-.contact-label {
-    position: absolute;
-    left: 1rem;
-    top: 1rem;
-    font-size: 1rem;
-    color: var(--text-secondary);
-    pointer-events: none;
-    transition: all 0.2s ease;
-    background: transparent;
-    padding: 0 0.2rem;
+.contact-input-group:nth-child(3) {
+    grid-column: span 2;
 }
 
-/* Floating Label Logic */
-.contact-input:focus~.contact-label,
-.contact-input:not(:placeholder-shown)~.contact-label,
-.contact-textarea:focus~.contact-label,
-.contact-textarea:not(:placeholder-shown)~.contact-label {
-    top: -0.6rem;
-    left: 0.8rem;
-    font-size: 0.8rem;
-    color: var(--primary-color);
-    background: white;
-    font-weight: 700;
+@media (max-width: 600px) {
+    .contact-input-group:nth-child(3) {
+        grid-column: span 1;
+    }
 }
 
 .contact-input,
 .contact-textarea {
     width: 100%;
-    padding: 1rem;
+    padding: 1.1rem 1.2rem;
+    background: #161515;
     border: 1px solid var(--border-color);
-    border-radius: var(--radius-sm);
-    background: white;
-    font-family: 'Nunito', sans-serif;
-    font-size: 1rem;
-    transition: all 0.2s ease;
+    border-radius: 6px;
+    color: var(--text-primary);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 0.92rem;
+    transition: border-color 0.2s ease;
+    outline: none;
 }
 
 .contact-input:focus,
 .contact-textarea:focus {
-    outline: none;
     border-color: var(--primary-color);
-    box-shadow: 0 0 0 3px rgba(253, 196, 53, 0.1);
+    box-shadow: none;
 }
 
 .contact-textarea {
+    min-height: 140px;
     resize: vertical;
-    min-height: 150px;
 }
 
+.contact-label {
+    position: absolute;
+    left: 1.2rem;
+    top: 1.1rem;
+    color: var(--text-secondary);
+    font-size: 0.88rem;
+    pointer-events: none;
+    transition: all 0.2s ease;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.contact-input:focus ~ .contact-label,
+.contact-input:not(:placeholder-shown) ~ .contact-label,
+.contact-textarea:focus ~ .contact-label,
+.contact-textarea:not(:placeholder-shown) ~ .contact-label {
+    top: -0.55rem;
+    left: 0.75rem;
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    background: #0F0E0E;
+    padding: 0 0.4rem;
+    border-radius: 2px;
+}
+
+/* Submit button */
 .contact-submit-btn {
-    align-self: flex-end;
-    padding: 0.8rem 2.5rem;
-    background: var(--primary-color);
-    color: var(--text-primary);
-    border-radius: var(--radius-sm);
-    font-weight: 700;
-    font-size: 1.1rem;
-    transition: all 0.2s;
-    box-shadow: var(--shadow-sm);
-    position: relative;
-    overflow: hidden;
+    grid-column: span 2;
+    width: 100%;
+    padding: 1.1rem;
+    background: var(--text-primary);
+    color: var(--bg-color);
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    border: none;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    transition: opacity 0.2s ease;
+    box-shadow: none;
 }
 
 .contact-submit-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-md);
-    background: var(--primary-hover);
+    opacity: 0.9;
 }
 
-.contact-button-text {
-    position: relative;
-    z-index: 1;
+.contact-submit-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
 }
 
-.contact-info-footer {
-    display: flex;
-    gap: 2rem;
-    margin-top: 2rem;
-    justify-content: center;
-}
-
-.footer-icon-link {
-    color: var(--text-tertiary);
-    transition: all 0.2s;
-    padding: 0.5rem;
-    border-radius: 50%;
-    background: transparent;
-}
-
-.footer-icon-link:hover {
-    color: var(--primary-color);
-    background: var(--surface-highlight);
-    transform: translateY(-2px);
+@media (max-width: 600px) {
+    .contact-submit-btn {
+        grid-column: span 1;
+    }
 }

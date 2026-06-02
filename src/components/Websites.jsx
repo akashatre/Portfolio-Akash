@@ -12,13 +12,14 @@ const ICON_MAP = {
 
 const Websites = () => {
     const { websites } = useWebsites();
+    const visibleWebsites = (websites || []).filter(site => site.visible !== false);
 
-    if (!websites || websites.length === 0) {
+    if (visibleWebsites.length === 0) {
         return null;
     }
 
     return (
-        <section id="websites" style={{ background: 'white' }}>
+        <section id="websites" style={{ background: 'transparent' }}>
             <div className="container">
                 <div className="section-header">
                     <h2 className="section-title">Web Projects</h2>
@@ -26,7 +27,7 @@ const Websites = () => {
                 </div>
 
                 <div className="websites-grid">
-                    {websites.map((site, index) => (
+                    {visibleWebsites.map((site, index) => (
                         <motion.div
                             key={site.id || index}
                             className="website-card"

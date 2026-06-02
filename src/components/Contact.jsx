@@ -51,7 +51,7 @@ const Contact = () => {
                             maxWidth: '600px',
                             margin: '0 auto',
                             padding: '3rem',
-                            background: 'white',
+                            background: 'var(--surface-color)',
                             borderRadius: 'var(--radius-lg)',
                             boxShadow: 'var(--shadow-md)',
                             textAlign: 'center',
